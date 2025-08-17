@@ -1,0 +1,155 @@
+# === Matrix Game 2.0 Apple Silicon .gitignore ===
+
+# ====================================
+# 模型文件 (Models)
+# ====================================
+# 大型預訓練模型文件 (通過 huggingface-cli 下載)
+*.safetensors
+*.pth
+*.bin
+*.ckpt
+*.pt
+
+# 特定模型文件夾中的大文件
+Matrix-Game-2.0/Wan2.1_VAE.pth
+Matrix-Game-2.0/base_distilled_model/*.safetensors
+Matrix-Game-2.0/base_model/*.safetensors
+Matrix-Game-2.0/gta_distilled_model/*.safetensors
+Matrix-Game-2.0/templerun_distilled_model/*.safetensors
+Matrix-Game-2.0/models_clip_*.pth
+
+# Hugging Face 模型文件夾
+Matrix-Game-2.0/xlm-roberta-large/pytorch_model.bin
+Matrix-Game-2.0/xlm-roberta-large/model.safetensors
+
+# ====================================
+# 輸出文件 (Output Files)
+# ====================================
+# 測試輸出
+test_outputs/
+test_outputs_streaming/
+outputs/
+generated_videos/
+demo_outputs/
+
+# 影片和圖像輸出
+*.mp4
+*.avi
+*.mov
+*.gif
+!assets/videos/matrix-game2.mp4  # 保留示例影片
+
+# ====================================
+# 開發和調試文件
+# ====================================
+# Python 相關
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 虛擬環境
+venv/
+env/
+ENV/
+.env
+.venv
+
+# IDE 和編輯器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# ====================================
+# 日誌和臨時文件
+# ====================================
+# 日誌文件
+*.log
+logs/
+*.out
+
+# 臨時文件
+tmp/
+temp/
+.tmp/
+.cache/
+*.tmp
+
+# ====================================
+# 系統文件
+# ====================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# ====================================
+# GPU 和性能相關
+# ====================================
+# NVIDIA 相關
+*.ptx
+*.cubin
+
+# 性能分析
+*.prof
+*.profile
+
+# ====================================
+# 實驗和測試文件
+# ====================================
+experiments/
+test_results/
+benchmarks/
+debug_outputs/
+
+# 開發時臨時文件 (已棄用)
+*_apple_silicon.py
+matrix_game_real.py
+install_macos_m2.sh
+
+# ====================================
+# 大型文檔和媒體
+# ====================================
+# 大型 PDF 文件 (>10MB)
+assets/pdf/report.pdf
+*.pdf
+
+# ====================================
+# 註釋
+# ====================================
+# 注意：模型文件使用符號鏈接指向 Hugging Face 緩存
+# 請運行 'bash download_models.sh' 來下載所需的模型文件
+# 大型 PDF 文件請從原始來源下載
