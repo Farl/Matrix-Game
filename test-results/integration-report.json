@@ -1,0 +1,79 @@
+{
+  "timestamp": 1755444108.988558,
+  "test_environment": {
+    "platform": "Apple Silicon",
+    "pytorch_version": "2.6.0",
+    "mps_available": true
+  },
+  "test_results": {
+    "core_modules": {
+      "ActionModule": {
+        "status": "success",
+        "message": "\u5c0e\u5165\u548c\u521d\u59cb\u5316\u6210\u529f"
+      },
+      "WanModel": {
+        "status": "success",
+        "message": "\u6a21\u578b\u548cembedding\u6b63\u5e38\uff0c\u8f38\u51fa\u5f62\u72c0: torch.Size([10, 64])"
+      },
+      "CausalInference": {
+        "status": "success",
+        "message": "\u7ba1\u9053\u6a21\u7d44\u5c0e\u5165\u6210\u529f"
+      }
+    },
+    "device_compatibility": {
+      "mps_available": true,
+      "mps_built": true,
+      "cuda_available": false,
+      "pytorch_version": "2.6.0"
+    },
+    "attention_mechanisms": {
+      "status": "success",
+      "execution_time": 0.11922311782836914
+    },
+    "precision_stability": {
+      "size_10": {
+        "shape": [
+          10,
+          128
+        ],
+        "has_nan": false,
+        "has_inf": false,
+        "value_range": [
+          -0.9944594502449036,
+          1.0
+        ]
+      },
+      "size_100": {
+        "shape": [
+          100,
+          128
+        ],
+        "has_nan": false,
+        "has_inf": false,
+        "value_range": [
+          -1.0,
+          1.0
+        ]
+      },
+      "size_1000": {
+        "shape": [
+          1000,
+          128
+        ],
+        "has_nan": false,
+        "has_inf": false,
+        "value_range": [
+          -1.0,
+          1.0
+        ]
+      }
+    },
+    "memory_efficiency": {
+      "initial_mb": 0.0,
+      "peak_mb": 41.961669921875,
+      "final_mb": 7.62939453125,
+      "within_m2_limits": true
+    }
+  },
+  "overall_success_rate": 100.0
+}
