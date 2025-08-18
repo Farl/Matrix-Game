@@ -3,6 +3,7 @@ from einops import rearrange
 import torch
 import torch.nn as nn
 from .posemb_layers import apply_rotary_emb, get_nd_rotary_pos_embed
+from .._warning_state import warning_state
 import math
 
 # Smart Flash Attention fallback implementation
@@ -23,7 +24,7 @@ try:
         print("⚠️  Flash Attention 3.0 不可用，使用 2.x")
         
 except ImportError:
-    print("⚠️  Flash Attention 不可用，使用智能回退")
+    warning_state.show_flash_attention_warning("⚠️  Flash Attention 不可用，使用智能回退")
     
     def flash_attn_func(q, k, v, causal=False, dropout_p=0.0):
         """

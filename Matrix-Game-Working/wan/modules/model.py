@@ -10,7 +10,9 @@ from diffusers.models.modeling_utils import ModelMixin
 from einops import repeat, rearrange
 from .action_module import ActionModule
 from .attention import flash_attention
+from .._warning_state import warning_state
 DISABLE_COMPILE = False  # get os env
+
 __all__ = ['WanModel']
 
 
@@ -22,7 +24,7 @@ def sinusoidal_embedding_1d(dim, position):
     # 智能精度管理：MPS 不支援 float64，自動降級到 float32
     if position.device.type == 'mps':
         position = position.type(torch.float32)
-        print("ℹ️  MPS 設備：使用 float32 進行 sinusoidal embedding")
+        warning_state.show_mps_warning()
     else:
         position = position.type(torch.float64)
 

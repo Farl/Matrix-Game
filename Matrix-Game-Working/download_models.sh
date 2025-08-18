@@ -68,10 +68,21 @@ install_huggingface_cli() {
     
     if ! command -v huggingface-cli &> /dev/null; then
         log_warning "Hugging Face CLI 未安裝，正在安裝..."
+        
+        # 檢查是否在虛擬環境中
+        if [[ -z "${VIRTUAL_ENV}" ]]; then
+            log_error "請先啟用虛擬環境再執行此腳本！"
+            log_info "建議步驟："
+            log_info "  python3 -m venv venv_matrix_game"
+            log_info "  source venv_matrix_game/bin/activate"
+            log_info "  ./download_models.sh"
+            exit 1
+        fi
+        
         $PIP_CMD install huggingface_hub[cli]
         log_success "Hugging Face CLI 安裝完成"
     else
-        log_success "Hugging Face CLI 已安裝: $(huggingface-cli --version)"
+        log_success "Hugging Face CLI 已安裝"
     fi
 }
 
@@ -118,7 +129,7 @@ download_models() {
     # 下載模型 (使用符號鏈接以節省空間)
     huggingface-cli download Skywork/Matrix-Game-2.0 \
         --local-dir Matrix-Game-2.0 \
-        --local-dir-use-symlinks \
+        --local-dir-use-symlinks auto \
         --resume-download
     
     log_success "模型下載完成！"

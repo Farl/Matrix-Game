@@ -13,6 +13,9 @@ try:
 except ModuleNotFoundError:
     FLASH_ATTN_2_AVAILABLE = False
 
+# 統一的警告控制
+from ..._warning_state import warning_state
+
 import warnings
 
 __all__ = [
@@ -128,7 +131,7 @@ def flash_attention(
                 deterministic=deterministic).unflatten(0, (b, lq))
         else:
             # Apple Silicon 回退：使用標準 scaled dot-product attention
-            print("⚠️  Flash Attention 不可用，使用標準注意力回退")
+            warning_state.show_flash_attention_warning()
             # 重新整形為標準注意力格式
             q_reshaped = q.view(b, lq, -1, q.size(-1))
             k_reshaped = k.view(b, lk, -1, k.size(-1))  
