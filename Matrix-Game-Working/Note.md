@@ -12,7 +12,7 @@ pip install -r requirements_macos_m2.txt
 PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 TORCH_COMPILE_DISABLE=1 python3 inference.py \
 --config_path configs/inference_yaml/inference_universal.yaml \
 --checkpoint_path Matrix-Game-2.0/base_distilled_model/base_distill.safetensors \
---img_path demo_images/deemo2/statue.jpg \
+--img_path demo_images/universal/0004.png \
 --output_folder outputs \
 --num_output_frames 30 \
 --seed 42 \
