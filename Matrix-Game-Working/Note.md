@@ -28,4 +28,6 @@ TORCH_COMPILE_DISABLE=1 python3 inference_streaming.py \
 ```
 ```
 demo_images/deemo2/statue.jpg
+demo_images/universal/0000.png
+demo_images/universal/0001.png
 ```
